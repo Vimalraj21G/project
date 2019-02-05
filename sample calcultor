@@ -1,0 +1,40 @@
+<html>
+   <head>
+   <body>
+      <form name="calculator">
+         <table>
+            <tr>
+               <td colspan="4">
+                  <input type="text" id="display">
+               </td>  
+            </tr>
+            <tr>
+               <td><input type="button"  value="one" onclick="calculator.display.value+= '1'"></td>  
+               <td><input type="button"   value="two" onclick="calculator.display.value += '2'"></td>
+               <td><input type="button"   value="three" onclick="calculator.display.value += '3'"></td>
+               <td><input type="button" class="operator"  value="ADD" onclick="calculator.display.value += '+'"></td>
+            </tr>
+            <tr>
+               <td><input type="button"   value="four" onclick="calculator.display.value += '4'"></td>
+               <td><input type="button"  value="five" onclick="calculator.display.value += '5'"></td>
+               <td><input type="button" value="six" onclick="calculator.display.value += '6'"></td>
+               <td><input type="button"   value="SUB" onclick="calculator.display.value += '-'"></td>
+            </tr>
+            <tr>
+               <td><input type="button" value="seven" onclick="calculator.display.value += '7'"></td>
+               <td><input type="button"  value="eight" onclick="calculator.display.value += '8'"></td>
+               <td><input type="button" value="nine" onclick="calculator.display.value += '9'"></td>
+               <td><input type="button" class="operator"  value="MUL" onclick="calculator.display.value += '*'"></td>
+            </tr>
+            <tr>
+               <td><input type="button" id="clear" name="clear" value="c" onclick="calculator.display.value = ''"></td>
+               <td><input type="button" value="0" onclick="calculator.display.value += '0'"></td>
+               <td><input type="button"  value="EQUAL " onclick="calculator.display.value = eval(calculator.display.value)"></td>
+               <td><input type="button" class="operator"  value="DIV" onclick="calculator.display.value += '/'"></td>
+			     <td><input type="button"   value="BACK" onclick="calculator.display.value+=/10"></td> 
+            </tr>
+         </table>
+      </form>
+   </body>
+   </head>
+</html>
