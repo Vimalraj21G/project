@@ -1,0 +1,154 @@
+<html>
+<head>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Pacifico|Oxygen);
+body {
+  background-color: darkkhaki;
+}
+ 
+p {
+  margin: 0;
+  font-family: Pacifico;
+  position: relative;
+  left: 5%;
+}
+ 
+.calculator {
+   margin: 1em auto;
+  padding: 1em 0;
+  display: block-inline;
+  width: 250px;
+  background-color: #444;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 3px #111;
+  font-family: 'Oxygen';
+}
+
+.calc-row {
+  text-align: center;
+}
+
+.calc-row div.screen {
+   
+  display: table;
+  width: 85%;
+  background-color:green;
+  text-align: right;
+  font-size: 2em;
+  min-height: 1.2em;
+  margin-left: 0.5em;
+  padding-right: 0.5em;
+  border: 1px solid #888;
+  color:grey;
+}
+
+.calc-row div {
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  border: 1px solid #555;
+  background-color: #eee;
+  padding: 10px 0;
+  margin: 7px 5px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 1px 1px #222;  
+  width: 50px;
+}
+
+.calc-row div.zero {
+  width: 45px; 
+   margin-right:6px;
+}  
+.text-box
+{
+    width: 10000px;
+	 margin-right:6px;
+} 
+ 
+</style> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">     
+ $(document).ready(function(){ 
+ var current='0';  
+	var prev='0';
+	var operation=null;
+  $('.button').on('click', function(evt) {   
+  
+    var buttonPressed = $(this).html(); 
+ 
+     
+	if(buttonPressed === 'C')
+	{
+	  current='0';
+	}   
+	 
+	 
+   else  if(isNum(buttonPressed))
+{
+if (current=== '0') current = buttonPressed;
+      else current = current + buttonPressed; 
+	  console.log(current);
+}
+  else  if(isOper(buttonPressed))
+{
+      prev = parseFloat(current);
+      operation = buttonPressed;
+   console.log(prev,operation);
+      current= '';  
+}
+ else if (buttonPressed === '=') {
+      current= operate(current, prev, operation);
+      operation = null;
+    }     
+   update(current);	 	 
+    
+	}); 
+});
+
+update = function(displayValue) {
+  var displayValue = displayValue;
+  $('.screen').html(displayValue);
+};
+
+isNum = function(value) {
+  return !isNaN(value);
+}
+
+isOper = function(value) {
+  return value === '/' || value === '*' || value === '+' || value === '-';
+};  
+
+operate = function(a, b, operation) {
+  a = parseFloat(a);
+  b = parseFloat(b);
+  console.log(a, b, operation);  
+  if (operation === '+') return a + b;
+  if (operation === '-') return a - b;
+  if (operation === '*') return a * b;
+  if (operation === '/') return a / b;
+}
+</script> 
+</head>
+<body>
+ 
+<div class="calculator">
+  <p>Calculator</p>  
+  <div class="calc-row">
+    <div class="screen">0</div>   
+  </div>   
+ <div class="calc-row">  
+    <div class="button">1</div><div class="button">2</div><div class="button">3</div><div class="button">-</div>  </div>
+   <div class="calc-row">
+    <div class="button">4</div><div class="button">5</div><div class="button">6</div><div class="button multiply">*</div>
+  </div>
+   <div class="calc-row">
+    <div class="button">7</div><div class="button">8</div><div class="button">9</div><div class="button divice">/</div>     
+  </div> 
+  <div class="calc-row">
+    <div class=" button">0</div><div class="button">+</div><div class="button equal">=</div><div button="button">C</div>  
+  </div>
+</div>  
+</body>
+</html 
+ 
